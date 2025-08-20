@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +15,42 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private int contador = 0;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("ciclo_vida", "onPause");
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("ciclo_vida", "onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("ciclo_vida", "onCreate");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("ciclo_vida", "onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("ciclo_vida", "onCreate");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("ciclo_vida", "onDestroy");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         getString(R.string.hello);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         TextView tv = findViewById(R.id.textView);
         Button buttonClick = findViewById(R.id.button);
 
