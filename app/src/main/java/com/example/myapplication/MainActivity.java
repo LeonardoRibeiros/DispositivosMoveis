@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("ciclo_vida", "onDestroy");
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
